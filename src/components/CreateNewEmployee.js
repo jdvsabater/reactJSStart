@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class CreateNewEmployee extends Component {
   constructor(props) {
     super(props);
-    this.state = { employees: [] };
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -24,16 +23,18 @@ class CreateNewEmployee extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} class='App'>
           <h3>Create New Employee: </h3>
           <input
             placeholder='Employee Name'
             ref={nameInput => (this.nameInput = nameInput)}
-          />
+          />{' '}
+          <br />
           <input
             placeholder='Age'
             ref={ageInput => (this.ageInput = ageInput)}
-          />
+          />{' '}
+          <br />
           <input
             placeholder='Salary'
             ref={salaryInput => (this.salaryInput = salaryInput)}

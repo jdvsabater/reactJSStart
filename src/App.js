@@ -18,11 +18,16 @@ class App extends Component {
       age: age,
       salary: salary
     };
-    axios
-      .post('http://dummy.restapiexample.com/api/v1/create', employee)
+    try {
+      axios
+        .post('http://dummy.restapiexample.com/api/v1/create', employee)
 
-      .then(res => console.log(res.data));
-    console.log(employee);
+        .then(res => console.log(res.data));
+      console.log(employee);
+    } catch (err) {
+      console.log('Fail to Add Employee');
+      alert('Error!!!');
+    }
   }
 
   updateEmployee(id, details) {
@@ -41,20 +46,6 @@ class App extends Component {
     }
   }
 
-  deleteEmployee(id) {
-    try {
-      axios({
-        method: 'delete',
-        url: `http://dummy.restapiexample.com/api/v1/delete/${id}`
-      }).then(response => {
-        console.log('Employee details removed');
-        console.log(response.data);
-      });
-    } catch (err) {
-      console.log('Fail to remove Employee Details');
-      console.log(err);
-    }
-  }
   state = {
     show: false
   };
