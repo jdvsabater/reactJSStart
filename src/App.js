@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import ShowEmployee from './ShowEmployee';
+import ShowEmployee from './components/ShowEmployee';
+import Modal from './components/modals/Modal';
 
 class App extends Component {
   constructor(props) {
@@ -55,19 +56,24 @@ class App extends Component {
       console.log(err);
     }
   }
+  state = {
+    show: false
+  };
+
+  showModal = () => {
+    this.setState({
+      ...this.state,
+      show: !this.state.show
+    });
+  };
 
   render() {
-    var newEmployee = {
-      name: 'qwerty000',
-      salary: '24111',
-      age: '35'
-    };
     return (
       <div>
-        <h1>Employee List</h1>
-        <hr />
-
-        <ShowEmployee />
+        <input type='button' onClick={this.showModal} value='Show Modal' />
+        <Modal onClose={this.showModal} show={this.state.show}>
+          <ShowEmployee />
+        </Modal>
       </div>
     );
   }
