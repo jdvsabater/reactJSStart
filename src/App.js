@@ -61,6 +61,7 @@ class App extends Component {
     return (
       <div>
         <input
+          class='myButton'
           type='button'
           onClick={this.showModal}
           value='Create New Employee'
@@ -70,6 +71,13 @@ class App extends Component {
         </Modal>
 
         <hr />
+        <br />
+        <center>
+          <h1>
+            <span class='demoObject'>Employee Management</span>
+          </h1>
+        </center>
+
         <ShowEmployee />
       </div>
     );

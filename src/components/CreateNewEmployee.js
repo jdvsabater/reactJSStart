@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../App.css';
 
 class CreateNewEmployee extends Component {
   constructor(props) {
@@ -40,7 +41,8 @@ class CreateNewEmployee extends Component {
             ref={salaryInput => (this.salaryInput = salaryInput)}
           />
           <br />
-          <button>Submit</button>
+          <br />
+          <button className='myButton'>Submit</button>
         </form>
       </div>
     );

@@ -5,25 +5,14 @@ import { parse } from 'url';
 class ShowEmployee extends Component {
   constructor(props) {
     super(props);
-    this.state = { employees: [], id: '' };
+    this.state = { employees: [] };
   }
-
-  getEmployees() {
-    return this.state.employees;
-  }
-
   deleteEmployee(id) {
-    let getter = this.getEmployees();
-
-    let test = getter.filter(get => {
-      return get.id !== id;
-    });
-
     axios
-      .delete(`http://dummy.restapiexample.com/api/v1/delete/${test}`)
+      .delete(`http://dummy.restapiexample.com/api/v1/delete/${id}`)
       .then(res => console.log(res.data));
     console.log('Employee Deleted');
-    console.log(test);
+    console.log(id);
   }
 
   componentDidMount() {
@@ -31,24 +20,26 @@ class ShowEmployee extends Component {
       axios
         .get('http://dummy.restapiexample.com/api/v1/employees')
         .then(response => {
-          console.log(response.data);
+          //console.log(response.data);
           this.setState({ employees: response.data });
+          console.log(this.state.employees);
         });
     } catch (err) {
       console.log('Fetching Employee Details');
       console.log(err);
     }
   }
+
   render() {
     return (
-      <table id='customers' align='center'>
+      <table class='redTable' align='center'>
         <thead>
           <tr align='left'>
             <th>Employee ID</th>
             <th>Employee Name</th>
             <th>Age</th>
             <th>Salary</th>
-            <th>Menu</th>
+            <th />
           </tr>
         </thead>
         <tbody>
@@ -58,8 +49,7 @@ class ShowEmployee extends Component {
               <td>{employee.employee_name}</td>
               <td>{employee.employee_age}</td>
               <td>{employee.employee_salary}</td>
-              <td align='center'>
-                <button>Edit</button> |{' '}
+              <td>
                 <button onClick={this.deleteEmployee}>Delete</button>
               </td>
             </tr>

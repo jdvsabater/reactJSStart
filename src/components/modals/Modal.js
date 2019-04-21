@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../App.css';
 
 const backdropStyle = {
   position: 'fixed',
@@ -38,6 +39,8 @@ export default class Modal extends React.Component {
           {this.props.children}
           <div style={footerStyle}>
             <button
+              id='demoFont'
+              className='myButton'
               onClick={e => {
                 this.onClose(e);
               }}
