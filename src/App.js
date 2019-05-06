@@ -21,27 +21,27 @@ class App extends Component {
     try {
       axios
         .post('http://dummy.restapiexample.com/api/v1/create', employee)
-
-        .then(res => console.log(res.data));
-      console.log(employee);
+        .then(res => {
+          this.getEmployees();
+          console.log(res.data);
+          console.log(employee);
+        });
     } catch (err) {
       console.log('Fail to Add Employee');
       alert('Error!!!');
     }
   }
 
-  updateEmployee(id, details) {
+  getEmployees() {
     try {
-      axios({
-        method: 'put',
-        url: `http://dummy.restapiexample.com/api/v1/update/${id}`,
-        data: details
-      }).then(response => {
-        console.log('Employee updated details');
-        console.log(response.data);
-      });
+      axios
+        .get('http://dummy.restapiexample.com/api/v1/employees')
+        .then(response => {
+          this.setState({ employees: response.data });
+          console.log(this.state.employees);
+        });
     } catch (err) {
-      console.log('Fail to update Employee Details');
+      console.log('Fetching Employee Details');
       console.log(err);
     }
   }
@@ -61,24 +61,24 @@ class App extends Component {
     return (
       <div>
         <input
-          class='myButton'
+          className='myButton'
           type='button'
           onClick={this.showModal}
           value='Create New Employee'
         />
-        <Modal onClose={this.showModal} show={this.state.show}>
-          <CreateNewEmployee addNewEmployee={this.addNewEmployee} />
-        </Modal>
 
         <hr />
         <br />
         <center>
           <h1>
-            <span class='demoObject'>Employee Management</span>
+            <span className='demoObject'>Employee Management</span>
           </h1>
         </center>
 
         <ShowEmployee />
+        <Modal onClose={this.showModal} show={this.state.show}>
+          <CreateNewEmployee addNewEmployee={this.addNewEmployee} />
+        </Modal>
       </div>
     );
   }

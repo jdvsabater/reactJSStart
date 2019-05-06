@@ -22,7 +22,7 @@ const modalStyle = {
 };
 const footerStyle = {
   position: 'absolute',
-  bottom: 20
+  bottom: 50
 };
 
 export default class Modal extends React.Component {
@@ -35,19 +35,19 @@ export default class Modal extends React.Component {
     }
     return (
       <div style={backdropStyle}>
-        <div style={modalStyle}>
+        <div style={modalStyle} className='mFront' align='left'>
+          <button
+            id='demoFont'
+            className='closeButton'
+            background='transpanrent'
+            onClick={e => {
+              this.onClose(e);
+            }}
+          >
+            X
+          </button>
           {this.props.children}
-          <div style={footerStyle}>
-            <button
-              id='demoFont'
-              className='myButton'
-              onClick={e => {
-                this.onClose(e);
-              }}
-            >
-              Close
-            </button>
-          </div>
+          <div style={footerStyle} />
         </div>
       </div>
     );
