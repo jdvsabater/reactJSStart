@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import { Button, FormGroup, Label, Toast, ToastHeader } from 'reactstrap';
 
 class CreateNewEmployee extends Component {
   constructor(props) {
@@ -24,28 +25,39 @@ class CreateNewEmployee extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
-          <h3>Create New Employee: </h3>
-          <input
-            className='txtBox'
-            placeholder='Employee Name'
-            ref={nameInput => (this.nameInput = nameInput)}
-          />{' '}
-          <br />
-          <input
-            className='txtBox'
-            placeholder='Age'
-            ref={ageInput => (this.ageInput = ageInput)}
-          />{' '}
-          <br />
-          <input
-            className='txtBox'
-            placeholder='Salary'
-            ref={salaryInput => (this.salaryInput = salaryInput)}
-          />
-          <br />
-          <br />
-          <button className='myButton'>Submit</button>
+        <form onSubmit={this.onSubmit} className='formProp'>
+          <div>
+            <Toast>
+              <ToastHeader className='toasterProp'>
+                Add Employee Details
+              </ToastHeader>
+            </Toast>
+          </div>
+          <FormGroup>
+            <Label>Employee Name</Label>
+            <input
+              className='textBox'
+              placeholder='Employee Name'
+              ref={nameInput => (this.nameInput = nameInput)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Employee Age</Label>
+            <input
+              className='textBox'
+              placeholder='Age'
+              ref={ageInput => (this.ageInput = ageInput)}
+            />{' '}
+          </FormGroup>
+          <FormGroup>
+            <Label>Employee Salary</Label>
+            <input
+              className='textBox'
+              placeholder='Salary'
+              ref={salaryInput => (this.salaryInput = salaryInput)}
+            />
+          </FormGroup>
+          <Button color='success'>Submit</Button>
         </form>
       </div>
     );

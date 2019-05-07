@@ -23,22 +23,22 @@
   color: #61dafb;
 }
 
-h1{
-  font-size: 55px;
-}
-.pageH{
-  height:100%
-}
+
+
 
 html, body{
   height: 100%
 }
 
-.demoObject {
+h1 {
   color: #333333;
-text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
-color: #333333;
+  background: #dcdcdc;
+  display: inline-block;
+  padding: 8px 24px;
+  border-radius: 16px;
+  font-size: 55px;
 }
+
 
 .myButton {
 	-moz-box-shadow: 1px 0px 0px 0px #fff6af;
@@ -108,7 +108,7 @@ color: #333333;
 }
 
 
-.redTable {
+.mTable {
   border: 2px solid rgb(243, 187, 66);
   background-color: #EEE7DB;
   width: 75%;
@@ -118,58 +118,6 @@ color: #333333;
   height: 50%;
   align-self: center;
 }
-.redTable td, table.redTable th {
-  border: 1px solid #AAAAAA;
-  padding: 3px 2px;
-}
-
-.redTable tbody td {
-  font-size: 23px;
-}
-.redTable tr:nth-child(even) {
-  background: #F5C8BF;
-}
-.redTable thead {
-  background: rgb(243, 187, 66);
-}
-.redTable thead th {
-  font-size: 19px;
-  font-weight: bold;
-  color: #FFFFFF;
-  text-align: center;
-  border-left: 2px solid rgb(243, 187, 66);
-}
-.redTable thead th:first-child {
-  border-left: none;
-}
-
-.redTable tfoot {
-  font-size: 13px;
-  font-weight: bold;
-  color: #FFFFFF;
-  background: rgb(243, 187, 66);
-}
-.redTable tfoot td {
-  font-size: 13px;
-}
-.redTable tfoot .links {
-  text-align: right;
-}
-.redTable tfoot .links a{
-  display: inline-block;
-  background: #FFFFFF;
-  color: rgb(243, 187, 66);
-  padding: 2px 8px;
-  border-radius: 5px;
-}
-
-h3{
-  border: 10px double black;
-  color: black;
-  background: #ffec64;
-  padding: 10px;
-}
-
 .txtBox {
   padding: 15px;
      font-size: 16px;
@@ -191,47 +139,30 @@ h3{
   align-items: center;
 }
 
-.closeButton {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
-	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
-	background-color:#ffffff;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+.headerSize{
+  font-size:40px;
+
 }
-.closeButton:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
-	background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
-	background-color:#f6f6f6;
-}
-.closeButton:active {
-	position:relative;
-	top:1px;
+.textBox{
+  display: block;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.formProp{
+  padding: 50px;
+  text-align: center;
+}
 
 
 @keyframes App-logo-spin {

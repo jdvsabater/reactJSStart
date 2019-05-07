@@ -4,12 +4,34 @@ import axios from 'axios';
 import ShowEmployee from './components/ShowEmployee';
 import CreateNewEmployee from './components/CreateNewEmployee';
 import Modal from './components/modals/Modal';
+import {
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+  Row,
+  Col
+} from 'reactstrap';
+import classnames from 'classnames';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { employeeList: [] };
     this.addNewEmployee = this.addNewEmployee.bind(this);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      activeTab: '1'
+    };
+  }
+  toggle(tab) {
+    if (this.state.activeTab !== tab) {
+      this.setState({
+        activeTab: tab
+      });
+    }
   }
 
   addNewEmployee(name, age, salary) {
@@ -57,25 +79,52 @@ class App extends Component {
     });
   };
 
+  componentDidMount() {
+    this.getEmployees();
+  }
   render() {
     return (
       <div>
-        <input
-          className='myButton'
-          type='button'
-          onClick={this.showModal}
-          value='Create New Employee'
-        />
+        <Nav tabs>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '1' })}
+              onClick={() => {
+                this.toggle('1');
+              }}
+            >
+              Employee Management
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({ active: this.state.activeTab === '2' })}
+              onClick={() => {
+                this.toggle('2');
+              }}
+            >
+              Create Employee
+            </NavLink>
+          </NavItem>
+        </Nav>
 
-        <hr />
-        <br />
-        <center>
-          <h1>
-            <span className='demoObject'>Employee Management</span>
-          </h1>
-        </center>
+        <TabContent activeTab={this.state.activeTab}>
+          <TabPane tabId='1'>
+            <Row>
+              <Col>
+                <ShowEmployee />
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane tabId='2'>
+            <Row>
+              <Col sm='12'>
+                <CreateNewEmployee addNewEmployee={this.addNewEmployee} />
+              </Col>
+            </Row>
+          </TabPane>
+        </TabContent>
 
-        <ShowEmployee />
         <Modal onClose={this.showModal} show={this.state.show}>
           <CreateNewEmployee addNewEmployee={this.addNewEmployee} />
         </Modal>

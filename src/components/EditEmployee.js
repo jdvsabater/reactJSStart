@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import { Button, FormGroup, Label, Toast, ToastHeader } from 'reactstrap';
 
 class EditEmployee extends Component {
   constructor(props) {
@@ -43,27 +44,40 @@ class EditEmployee extends Component {
             this.onClose(e);
           }}
         >
-          <h3>Update Employee: </h3>
-          <input
-            className='txtBox'
-            defaultValue={this.state.name}
-            ref={nameInput => (this.nameInput = nameInput)}
-          />{' '}
-          <br />
-          <input
-            className='txtBox'
-            defaultValue={this.state.age}
-            ref={ageInput => (this.ageInput = ageInput)}
-          />{' '}
-          <br />
-          <input
-            className='txtBox'
-            defaultValue={this.state.salary}
-            ref={salaryInput => (this.salaryInput = salaryInput)}
-          />
-          <br />
-          <br />
-          <button className='myButton'>Submit</button>
+          <div>
+            <Toast>
+              <ToastHeader className='toasterProp'>
+                Update Employee Details
+              </ToastHeader>
+            </Toast>
+          </div>
+
+          <FormGroup>
+            <Label>Employee Name</Label>
+            <input
+              className='textBox'
+              defaultValue={this.state.name}
+              ref={nameInput => (this.nameInput = nameInput)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Employee Age</Label>
+            <input
+              className='textBox'
+              defaultValue={this.state.age}
+              ref={ageInput => (this.ageInput = ageInput)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Employee Salary</Label>
+            <input
+              className='textBox'
+              defaultValue={this.state.salary}
+              ref={salaryInput => (this.salaryInput = salaryInput)}
+            />
+          </FormGroup>
+
+          <Button color='warning'>Submit</Button>
         </form>
       </div>
     );

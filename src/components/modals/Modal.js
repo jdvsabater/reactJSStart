@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../App.css';
+import { Button } from 'reactstrap';
 
 const backdropStyle = {
   position: 'fixed',
@@ -35,17 +36,15 @@ export default class Modal extends React.Component {
     }
     return (
       <div style={backdropStyle}>
-        <div style={modalStyle} className='mFront' align='left'>
-          <button
-            id='demoFont'
-            className='closeButton'
-            background='transpanrent'
+        <div style={modalStyle}>
+          <Button
+            close
             onClick={e => {
               this.onClose(e);
             }}
           >
             X
-          </button>
+          </Button>
           {this.props.children}
           <div style={footerStyle} />
         </div>

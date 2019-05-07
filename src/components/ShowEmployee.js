@@ -5,8 +5,7 @@ import 'react-table/react-table.css';
 import '../App.css';
 import EditEmployee from './EditEmployee';
 import Modal from './modals/Modal';
-import { parse } from 'url';
-import { delay } from 'q';
+import { Button, Toast, ToastHeader } from 'reactstrap';
 
 class ShowEmployee extends Component {
   constructor(props) {
@@ -58,6 +57,7 @@ class ShowEmployee extends Component {
             age: res.data.employee_age,
             salary: res.data.employee_salary
           });
+
           console.log(this.state.id);
           this.showModal();
         });
@@ -119,12 +119,12 @@ class ShowEmployee extends Component {
         width: 150,
         Cell: ({ row }) => (
           <div>
-            <input
-              className='closeButton'
-              type='button'
+            <Button
+              color='warning'
               onClick={this.getEmployeeById.bind(this, row.id)}
-              value='Edit'
-            />
+            >
+              Edit
+            </Button>
           </div>
         )
       },
@@ -134,21 +134,26 @@ class ShowEmployee extends Component {
         width: 150,
         Cell: ({ row }) => (
           <div>
-            <button
-              className='closeButton'
+            <Button
+              color='danger'
               onClick={this.deleteEmployee.bind(this, row.id)}
             >
               Delete
-            </button>
+            </Button>
           </div>
         )
       }
     ];
 
     return (
-      <div align='center' className='pageH'>
+      <div align='center'>
+        <div className='p-3 my-2 rounded bg-docs-transparent-grid'>
+          <Toast>
+            <ToastHeader className='toasterProp'>Employee Table</ToastHeader>
+          </Toast>
+        </div>
         <ReactTable
-          className='redTable'
+          className='mTable'
           data={this.state.data}
           columns={columns}
           defaultPageSize={10}
